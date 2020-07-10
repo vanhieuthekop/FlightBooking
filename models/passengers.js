@@ -1,4 +1,4 @@
-const {Sequelize, DataTypes, Model} = require('sequelize');
+const {DataTypes} = require('sequelize');
 const db = require('../startup/database');
 const Joi = require('joi');
 

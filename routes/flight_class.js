@@ -45,8 +45,7 @@ router.delete('/:id', async(req, res) => {
     FlightClass.destroy({
         where : {
             flight_class_id: req.params.id
-        },
-            restartIdentity: true
+        }
     });
     res.send(flightClass);
 });

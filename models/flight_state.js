@@ -2,8 +2,8 @@ const {DataTypes} = require('sequelize');
 const db = require('../startup/database');
 const Joi = require('joi');
 
-const FlightClass = db.define('flight_class', {
-    flight_class_id : {
+const FlightState = db.define('flight_state', {
+    state_id : {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -13,13 +13,13 @@ const FlightClass = db.define('flight_class', {
     }
 }, {timestamps: false});
 
-function validateFlightClass(flightClass) {
+function validateFlightState(flightState) {
     const schema = {
         name: Joi.string().max(50).required()
     }
 
-    return Joi.validate(flightClass, schema);
+    return Joi.validate(flightState, schema);
 }
 
-module.exports.FlightClass = FlightClass;
-module.exports.validate = validateFlightClass;
+module.exports.FlightState = FlightState;
+module.exports.validate = validateFlightState;
