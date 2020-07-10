@@ -1,16 +1,7 @@
 const db = require("../startup/database");
 const {Passenger,validate} = require("../models/passengers");
 const express = require("express");
-const { response } = require("express");
 const router = express.Router();
-
-// router.post('/', async(req, res) => {
-//     const { error } = validate(req.body);
-//     if (error) return res.status(400).send(error.details[0].message);
-
-//     let passenger = {
-//     };
-// });
 
 router.get('/', async(req, res) => {
     const passengers = await Passenger.findAll();
@@ -37,20 +28,27 @@ router.put('/:id', async(req, res) => {
     let passenger = await Passenger.findByPk(req.params.id);
     if (!passenger) return res.status(404).send("The passenger with the given ID was not found.");
 
-    console.log(passenger);
-
     const { error } = validate(req.body, "update");
     if (error) return res.status(400).send(error.details[0].message);
 
     passenger = await Passenger.update( req.body , {
         where : {
             passenger_id : req.params.id
-        },
-        returning: true,
-        plain: true
+        }
     } );
-
     res.send(await Passenger.findByPk(req.params.id));
+});
+
+router.delete ('/:id', async(req, res) => {
+    let passenger = await Passenger.findByPk(req.params.id);
+    if (!passenger) return res.status(404).send("The passenger with the given ID was not found.");
+    Passenger.destroy({
+        where : {
+            passenger_id : req.params.id
+        }
+    });
+    
+    res.send(passenger);
 });
 
 module.exports = router;

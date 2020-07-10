@@ -1,7 +1,6 @@
 const {Sequelize, DataTypes, Model} = require('sequelize');
 const db = require('../startup/database');
 const Joi = require('joi');
-const e = require('express');
 
 const Passenger = db.define('passengers', {
     passenger_id: {
