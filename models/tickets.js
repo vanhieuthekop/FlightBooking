@@ -7,7 +7,7 @@ const { Flight } = require('./flights');
 
 const Ticket = db.define('tickets', {
     ticket_id : {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
@@ -20,7 +20,7 @@ const Ticket = db.define('tickets', {
     date_create : {
         type: DataTypes.DATE
     }
-
+    
 }, {timestamps: false});
 
 FlightClass.hasMany(Ticket, {
@@ -52,7 +52,9 @@ function validateTicket(ticket) {
         ticket_id: Joi.string().max(45),
         price: Joi.number(),
         seat_number: Joi.number(),
-        date_create: Joi.date()
+        flight_class_id: Joi.number(),
+        passenger_id: Joi.number(),
+        flight_id: Joi.number()
     }
 
     return Joi.validate(ticket, schema);

@@ -47,7 +47,7 @@ Airport.hasMany(Flight, {
     onDelete: "RESTRICT",
     onUpdate: "CASCADE",
     foreignKey: {
-        name : 'arrival_IATA_code'
+        name : 'departure_IATA_code'
     }
 });
 
@@ -65,7 +65,11 @@ function validateFlight(flight) {
         departure_date_time: Joi.date(),
         arrival_date_time: Joi.date(),
         duration_in_minutes: Joi.number(),
-        distance_in_km: Joi.number()
+        distance_in_km: Joi.number(),
+        departure_IATA_code: Joi.string(),
+        destination_IATA_code: Joi.string(),
+        aircraft_id: Joi.number(),
+        state_id: Joi.number()
     }
 
     return Joi.validate(flight, schema);

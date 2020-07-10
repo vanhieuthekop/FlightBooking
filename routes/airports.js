@@ -46,8 +46,7 @@ router.delete ('/:id', async(req, res) => {
         where : {
             airport_id : req.params.id
         }
-    });
-    
+    }); 
     res.send(airport);
 });
 

@@ -20,6 +20,7 @@ router.post('/', async(req, res) => {
     const { error } = validate(req.body, "create");
     if (error) return res.status(400).send(error.details[0].message);
 
+    req.body.date_create = new Date().toISOString().slice(0,10);
     const ticket = await Ticket.create(req.body); 
     res.send(ticket);
 })

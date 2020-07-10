@@ -10,6 +10,7 @@ const flightStates = require('./routes/flight_state');
 const aircrafts = require('./routes/aircrafts');
 const airports = require('./routes/airports');
 const flights = require('./routes/flights');
+const tickets = require('./routes/tickets');
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use('/api/flightstate', flightStates);
 app.use('/api/aircrafts', aircrafts);
 app.use('/api/airports', airports);
 app.use('/api/flights', flights);
+app.use('/api/tickets', tickets);
 
 db.sync();
 
