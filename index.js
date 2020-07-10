@@ -8,6 +8,7 @@ const passengers = require('./routes/passengers');
 const flightClass = require('./routes/flight_class');
 const flightState = require('./routes/flight_state');
 const aircraft = require('./routes/aircrafts');
+const airport = require('./routes/airports');
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use('/api/passengers', passengers);
 app.use('/api/flightclass', flightClass);
 app.use('/api/flightstate', flightState);
 app.use('/api/aircrafts', aircraft);
+app.use('/api/airports', airport);
 
 db.sync();
 
