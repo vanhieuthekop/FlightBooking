@@ -28,7 +28,7 @@ const Flight = db.define('flights', {
 }, {timestamps: false});
 
 FlightState.hasMany(Flight, {
-    onDelete: "CASCADE",
+    onDelete: "RESTRICT",
     onUpdate: "CASCADE",
     foreignKey: {
         name : 'state_id'
@@ -36,7 +36,7 @@ FlightState.hasMany(Flight, {
 });
 
 Aircraft.hasMany(Flight, {
-    onDelete: "CASCADE",
+    onDelete: "RESTRICT",
     onUpdate: "CASCADE",
     foreignKey: {
         name : 'aircraft_id'
@@ -44,7 +44,7 @@ Aircraft.hasMany(Flight, {
 });
 
 Airport.hasMany(Flight, {
-    onDelete: "CASCADE",
+    onDelete: "RESTRICT",
     onUpdate: "CASCADE",
     foreignKey: {
         name : 'arrival_IATA_code'
@@ -52,7 +52,7 @@ Airport.hasMany(Flight, {
 });
 
 Airport.hasMany(Flight, {
-    onDelete: "CASCADE",
+    onDelete: "RESTRICT",
     onUpdate: "CASCADE",
     foreignKey: {
         name : 'destination_IATA_code'
